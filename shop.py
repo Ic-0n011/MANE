@@ -1,0 +1,10 @@
+def shop(player_name, player_money, player_xp, player_hp, player_potions_hp):
+	print(f"{player_name} приезжает в лавку")
+	print(f"имя: {player_name}")
+	print(f"камней: {player_money}")
+	print(f"опыт: {player_xp}")
+	print(f"жизни: {player_hp}")
+	print(f"зелья жизни: {player_potions_hp}")
+	print("1 - купить зелье за 5 монет")
+	print("2 - Уехать к камню")
+	input("++++++++++")
