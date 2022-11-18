@@ -1,37 +1,57 @@
 import os
 import shop
+import hero_engine
+
+def make_hero(name="Безымянный", hp=1, money=0, potion=0) -> tuple:
+    return(name, hp, money, potion)
+
 
 def start_game():
     """
-    запуск игры
-    игра контролируется переменной 
+    создает персонажа:
+        player_name - имя игрока
+        player_money -  деньги игрока
+        player_hp - жизни игрока,>
+        player_xp - опыт игрока
+        player_potions - зелья которые что то дают
+    деньги
+    имя
+    запускает игру
+    игра контролируется переменной is_game
     """
-    player_name = "Пустобрех"
-    player_money = 10
-    player_xp = 0
+    player = hero_engine.make_hero()
+
+    # TODO: щтправить в хиро енгин
+    player_name = input("Введите имя ")
+    player_money = 50
     player_hp = 100
-    player_potions_hp = 0
+    player_xp = 0
+    player_potions = 0
+    player = (player_name, player_hp, player_money, player_potions)
+
+    n_player_name = "Ган ган"
+    n_player_money = 50
+    n_player_hp = 100
+    n_player_potions = 0
+
     is_game = True
-    def rvilka_1():
-        while is_game:
-            os.system("cls")
-            print(f"имя: {player_name}")
-            print(f"камней: {player_money}")
-            print(f"опыт: {player_xp}")
-            print(f"жизни: {player_hp}")
-            print(f"зелья жизни: {player_potions_hp}")
-            print(f"{player_name} родъехал к развилке")
-            print("1 - Поехать на гладиаторские бои")
-            print("2 - Поехать играть в кости")
-            print("3 - Поехать в лавку алхимика")
-            answer = input("введите номер ответа и нажмите ENTER: ")
-            if answer == "1":
-                print("вы поехали на гладиаторские бои")
+    while is_game:
+        os.system("cls")
+        print(f"имя: {player[0]}")
+        print(f"деньги: {player[1]}")
+        print(f"здоровье: {player[2]}")
+        print(f"зелья: {player[3]}")
 
-            elif answer == "2":
-                print("вы поехали играть в кости")
+        print(f"{player_name} приехал к камню")
+        print("1 - поехать на битву с разбойниками ")
+        print("2 - роехать играть в кости")
+        print("3 - поехать в лавку алхимика")
 
-            elif answer == "3":
-                shop.shop(player_name, player_money, player_xp, player_hp, player_potions_hp)
-    rvilka_1()
-    input("нажмите ENTER")
+        answer = input("Введите номер ответа и нажмите ENTER")
+        if answer == "1":
+            print("разбойники")
+        elif answer == "2":
+            print("поехал играть в кости")
+        elif answer == "3":
+            player = shop.show(player)
+        input("Нажмите ENTER чтобы продолжить")
